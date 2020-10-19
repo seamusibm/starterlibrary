@@ -190,4 +190,25 @@
         "group": "virtualmachine"
     }
   ]
+"template_output_params": [  {
+    "name": "instance_ip_addr",
+    "label": "Instance Ip Addr",
+    "description": "The public IP address of the main server instance.",
+    "group_name": "",
+    "secured": false,
+    "hidden": false,
+    "shortname": "",
+    "type": "string"
+  },
+  {
+  "name": "private_key",
+  "label": "Private key",
+  "description": "The private key of the main server instance.",
+  "group_name": "",
+  "secured": true,
+  "hidden": false,
+  "shortname": "",
+  "type": "string"
+  }                                                      
+  ]
 }
