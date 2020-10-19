@@ -189,7 +189,7 @@
         "type": "string",
         "group": "virtualmachine"
     }
-  ]
+  ],
 "template_output_params": [  {
     "name": "instance_ip_addr",
     "label": "Instance Ip Addr",
