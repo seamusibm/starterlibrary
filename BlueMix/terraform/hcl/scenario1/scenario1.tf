@@ -4,6 +4,15 @@ module "camtags" {
   source = "../Modules/camtags"
 }
 
+resource "tls_private_key" "keyPairForAnsibleUser" {
+ algorithm = "RSA"
+}
+
+resource "ibm_compute_ssh_key" "ansible_ssh_key" {
+    public_key          = "${tls_private_key.keyPairForAnsibleUser.public_key_openssh}"
+    label               = "camKeyForAnsibleUser"
+}
+  
 variable "public_ssh_key" {
   description = "Public SSH key used to connect to the virtual guest"
 }
@@ -47,6 +56,13 @@ resource "ibm_compute_vm_instance" "debian_small_virtual_guest" {
   tags                     = ["${module.camtags.tagslist}"]
 }
 
-output "vm_ip" {
-  value = "Public : ${ibm_compute_vm_instance.debian_small_virtual_guest.ipv4_address}"
-}
+output "instance_ip_addr" {
+   value                 = "${ibm_compute_vm_instance.debian_small_virtual_guest.ipv4_address}"
+   description           = "The public IP address of the main server instance."
+ }
+
+output "private_key" {
+   value                 = "${tls_private_key.keyPairForAnsibleUser.private_key_pem}"
+   description           = "The private key of the main server instance."
+   sensitive             = true
+ }
