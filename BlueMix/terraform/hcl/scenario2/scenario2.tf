@@ -16,6 +16,7 @@ resource "ibm_compute_ssh_key" "ansible_ssh_key" {
 variable "memory-size" {
   description = "amount of ram for vm"
 }
+
 variable "core-num" {
   description = "num of cores for vm"
 }
