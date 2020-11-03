@@ -12,6 +12,17 @@ resource "ibm_compute_ssh_key" "ansible_ssh_key" {
     public_key          = "${tls_private_key.keyPairForAnsibleUser.public_key_openssh}"
     label               = "camKeyForAnsibleUser"
 }
+ 
+variable "memory-size" {
+  description = "amount of ram for vm"
+}
+variable "core-num" {
+  description = "num of cores for vm"
+}
+  
+variable "disk-size" {
+  description = "disk size"
+}
   
 variable "public_ssh_key" {
   description = "Public SSH key used to connect to the virtual guest"
@@ -46,9 +57,9 @@ resource "ibm_compute_vm_instance" "debian_small_virtual_guest" {
   network_speed            = 10
   hourly_billing           = true
   private_network_only     = false
-  cores                    = 1
-  memory                   = 1024
-  disks                    = [25, 10, 20]
+  cores                    = "${var.core-num}"
+  memory                   = "${var.memory-size}"
+  disks                    = ["${var.disk-size}"]
   user_metadata            = "{\"value\":\"newvalue\"}"
   dedicated_acct_host_only = false
   local_disk               = false
