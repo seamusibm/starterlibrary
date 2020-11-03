@@ -28,6 +28,39 @@
 	      "regex": "^ssh-rsa AAAA[0-9A-Za-z+/]+[=]{0,3}( [^@]+@[^@]+| [^@]+){0,1}$",
         "group": "virtualmachine"
     },
+   {
+        "description": "Cores of new vm",
+        "hidden": false,
+        "immutable": false,
+        "label": "core-num",
+        "name": "core-num",
+        "required": true,
+        "secured": false,
+        "type": "string",
+        "group": "virtualmachine"
+    },
+   {
+        "description": "memory of new vm",
+        "hidden": false,
+        "immutable": false,
+        "label": "memory-size",
+        "name": "memory-size",
+        "required": true,
+        "secured": false,
+        "type": "string",
+        "group": "virtualmachine"
+    },	  
+   {
+        "description": "disk size of new vm",
+        "hidden": false,
+        "immutable": false,
+        "label": "disk-size",
+        "name": "disk-size",
+        "required": true,
+        "secured": false,
+        "type": "string",
+        "group": "virtualmachine"
+    },	
     {
         "description": "SoftLayer datacenter where infrastructure resources will be deployed",
         "hidden": false,
